@@ -10,11 +10,13 @@ RUN yum install -y wget && wget -O install.sh http://download.bt.cn/install/inst
 
 RUN yes | /bin/bash install.sh
 
+COPY ./run.sh /bin/run.sh
+
 LABEL org.label-schema.schema-version="1.0.0" \
     org.label-schema.name="Docker Bt Panel" \
     org.label-schema.vendor="IT小强xqitw.cn" \
     org.label-schema.license="Apache Licence 2.0" \
     org.label-schema.build-date="20190521"
 
-CMD ["/bin/bash"]
+CMD ["/bin/run.sh"]
 
