@@ -1,2 +1,1 @@
-# docker-image-bt-panel
-Docker Bt Panel
+# Docker Bt Panel
