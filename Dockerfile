@@ -10,6 +10,10 @@ RUN yum install -y wget && wget -O install.sh http://download.bt.cn/install/inst
 
 RUN yes | /bin/bash install.sh
 
+RUN rm -f /www/server/panel/data/admin_path.pl
+
+RUN cd /www/server/panel && python tools.py panel 123456
+
 COPY ./run.sh /bin/run.sh
 
 LABEL org.label-schema.schema-version="1.0.0" \
