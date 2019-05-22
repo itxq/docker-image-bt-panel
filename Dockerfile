@@ -7,7 +7,7 @@ RUN yum update -y \
     && yum install -y wget \
     && wget -O install.sh http://download.bt.cn/install/install_6.0.sh
 
-RUN yes | /bin/bash install.sh
+RUN yes y | /bin/bash install.sh
 
 RUN echo "/www_xqitw_cn" >> /www/server/panel/data/admin_path.pl \
     && cd /www/server/panel \
