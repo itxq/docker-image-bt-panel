@@ -27,7 +27,7 @@ RUN echo "/www_xqitw_cn" > /www/server/panel/data/admin_path.pl \
     && python /www/server/panel/tools.py panel www_xqitw_cn
 
 # 修改宝塔面板用户名
-RUN echo "#!/bin/expect" >> /www/expect.sh \
+RUN echo "#!/bin/expect" > /www/expect.sh \
     && echo "spawn python /www/server/panel/tools.py cli" >> /www/expect.sh \
     && echo "expect \"请输入命令编号：\"" >> /www/expect.sh \
     && echo "send 6\n" >> /www/expect.sh \
@@ -37,10 +37,11 @@ RUN echo "#!/bin/expect" >> /www/expect.sh \
     && expect /www/expect.sh
 
 # 启动脚本
-RUN echo "#!/bin/sh" >> /www/run.sh \
+RUN echo "Docker Bt Panel Start Complete!" > /www/run.log \
+    && echo "#!/bin/sh" > /www/run.sh \
     && echo "/usr/sbin/crond start" >> /www/run.sh \
     && echo "/etc/init.d/bt restart" >> /www/run.sh \
-    && echo "tail -f -n 1 /www/expect.sh" >> /www/run.sh
+    && echo "tail -f -n 1 /www/run.log" >> /www/run.sh
 
 # 镜像信息
 LABEL org.label-schema.schema-version="1.0.0" \
