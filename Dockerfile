@@ -10,7 +10,7 @@ RUN echo "# .bash_profile" > /root/.bash_profile \
     && echo "fi" >> /root/.bash_profile \
     && echo "# User specific environment and startup programs" >> /root/.bash_profile \
     && echo "PATH=\$PATH:\$HOME/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin" >> /root/.bash_profile \
-    && echo "export PATH" >> /root/.bash_profile \
+    && echo "export PATH" >> /root/.bash_profile
 
 # 安装必要的扩展包
 RUN yum update -y \
