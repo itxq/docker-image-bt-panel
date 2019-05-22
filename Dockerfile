@@ -30,7 +30,7 @@ RUN echo "#!/bin/expect" >> /www/expect.sh \
 RUN echo "#!/bin/sh" >> /www/run.sh \
     && echo "/usr/sbin/crond start" >> /www/run.sh \
     && echo "/etc/init.d/bt restart" >> /www/run.sh \
-    && echo "/bin/bash" >> /www/run.sh
+    && echo "tail -f -n 1 /www/expect.sh" >> /www/run.sh
 
 LABEL org.label-schema.schema-version="1.0.0" \
     org.label-schema.name="Docker Bt Panel" \
