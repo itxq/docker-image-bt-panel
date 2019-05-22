@@ -9,6 +9,10 @@ RUN yum update -y \
 
 RUN yes | /bin/bash install.sh
 
+RUN echo "/www_xqitw_cn" >> /www/server/panel/data/admin_path.pl \
+    && cd /www/server/panel \
+    && python tools.py panel www_xqitw_cn
+
 RUN echo "#!/bin/sh" >> /www/run.sh \
     && echo "/usr/sbin/crond start" >> /www/run.sh \
     && echo "/etc/init.d/bt start" >> /www/run.sh \
