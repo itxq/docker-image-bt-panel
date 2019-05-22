@@ -10,11 +10,13 @@ RUN yum install -y wget && wget -O install.sh http://download.bt.cn/install/inst
 
 RUN yes | /bin/bash install.sh
 
-RUN rm -f /www/server/panel/data/admin_path.pl
+RUN echo "#!/bin/sh" >> /www/run.sh
 
-RUN cd /www/server/panel && python tools.py panel 123456
+RUN echo "/usr/sbin/crond start" >> /www/run.sh
 
-COPY ./run.sh /bin/run.sh
+RUN echo "/etc/init.d/bt start" >> /www/run.sh
+
+RUN echo "/bin/bash" >> /www/run.sh
 
 LABEL org.label-schema.schema-version="1.0.0" \
     org.label-schema.name="Docker Bt Panel" \
@@ -22,5 +24,7 @@ LABEL org.label-schema.schema-version="1.0.0" \
     org.label-schema.license="Apache Licence 2.0" \
     org.label-schema.build-date="20190521"
 
-CMD ["/bin/run.sh"]
+EXPOSE 8888 8080 888 443 80 21 20
+
+CMD /bin/bash /www/run.sh
 
