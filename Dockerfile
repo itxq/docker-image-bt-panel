@@ -11,7 +11,8 @@ RUN yes | /bin/bash install.sh
 
 RUN echo "#!/bin/sh" >> /www/run.sh \
     && echo "/usr/sbin/crond start" >> /www/run.sh \
-    && echo "/etc/init.d/bt start" >> /www/run.sh
+    && echo "/etc/init.d/bt start" >> /www/run.sh \
+    && echo "/bin/bash" >> /www/run.sh
 
 LABEL org.label-schema.schema-version="1.0.0" \
     org.label-schema.name="Docker Bt Panel" \
@@ -23,7 +24,5 @@ EXPOSE 8888 8080 3306 888 443 80 21 20
 
 VOLUME ["/www/wwwroot","/www/wwwlogs","/www/backup","/www/server/data","/www/server/cron"]
 
-ENTRYPOINT /bin/bash /www/run.sh
-
-CMD ["/bin/bash"]
+CMD /bin/bash /www/run.sh
 
