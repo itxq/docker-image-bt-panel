@@ -1,0 +1,33 @@
+version: "3"
+
+services:
+
+  bt-server:
+    env_file:
+      - .env
+    container_name: bt-server
+    command: /bin/bash /www/run.sh && exec the_original_command_goes_here
+    restart: always
+    image: ${BT_IMAGE_NAME}
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    volumes:
+      - ${WWW_ROOT_PATH}:/www/wwwroot:rw
+      - ${WWW_LOGS_PATH}:/www/wwwlogs:rw
+      - ${BACKUP_PATH}/database:/www/backup/database:rw
+      - ${BACKUP_PATH}/site:/www/backup/site:rw
+      - ${BACKUP_PATH}/path:/www/backup/path:rw
+      - ${DATA_PATH}:/www/server/data:rw
+      - ${CRON_PATH}:/www/server/cron:rw
+      - ${RECYCLE_PATH}:/www/Recycle_bin:rw
+    ports:
+      - "${PORT_CUSTOM}"
+      - "${PORT_8888}:8888"
+      - "${PORT_8080}:8080"
+      - "${PORT_888}:888"
+      - "${PORT_443}:443"
+      - "${PORT_80}:80"
+      - "${PORT_21}:21"
+      - "${PORT_20}:20"
+    network_mode: bridge
