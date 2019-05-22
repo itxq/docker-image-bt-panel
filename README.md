@@ -47,4 +47,6 @@ docker export -o bt-server.tar bt-server
 docker import bt-server.tar bt-server
 # 进入容器
 docker exec -i -t  bt-server /bin/bash
+# 可视化管理工具
+docker run -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock:ro -v I:\portainer:/data --name portainer portainer/portainer:latest 
 ```

@@ -50,7 +50,7 @@ LABEL org.label-schema.schema-version="1.0.0" \
     org.label-schema.name="Docker Bt Panel" \
     org.label-schema.vendor="IT小强xqitw.cn" \
     org.label-schema.license="Apache Licence 2.0" \
-    org.label-schema.build-date="20190521"
+    org.label-schema.build-date="20190522"
 
 # 开放端口
 EXPOSE 39000-40000 8888 8080 3306 888 443 80 21 20
