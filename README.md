@@ -1,13 +1,36 @@
 Docker Bt Panel
 ===============
 
-### 启动命令示例
+### 启动命令示例：
 
 ```shell
-docker run -p 8888:8888 -p 80:80 -p 443:443 -p 888:888 -p 21:21 -p 20:20 -p 8080:8080 -p 3306:3306 --name bt-server itxq/bt:latest /bin/bash /www/run.sh
+docker run -p 8888:8888 -p 80:80 -v /tp/public:/www/wwwroot --name bt-server itxq/bt:latest /bin/bash /www/run.sh
 ```
 
-### 默认登录信息
+### 建议端口映射：
+
++ 8888 宝塔面板端口
++ 8080 Tomcat默认端口
++ 3306 MySQL默认端口
++ 888 phpMyAdmin默认端口
++ 443 https默认端口
++ 80 网站默认端口
++ 21 FTP默认端口
++ 20 FTP主动模式数据端口
++ 39000-40000 FTP被动模端口范围
+
+### 建议挂载目录：
+
++ /www/wwwroot 站点目录
++ /www/wwwlogs 日志目录
++ /www/backup/database 数据库备份存放目录
++ /www/backup/site  网站备份存放目录
++ /www/backup/path  目录备份存放目录
++ /www/server/data 数据库数据目录
++ /www/server/cron 定时任务脚本存放目录
++ /www/Recycle_bin 回收站目录
+
+### 默认登录信息：
 
 > **地址：** http://ip:port/www_xqitw_cn
 
@@ -15,13 +38,13 @@ docker run -p 8888:8888 -p 80:80 -p 443:443 -p 888:888 -p 21:21 -p 20:20 -p 8080
 
 > **密码：** www_xqitw_cn
 
-### 相关常用命令
+### 常用命令小结：
 
 ```shell
 # 导出
 docker export -o bt-server.tar bt-server
 # 导入
-docker import bt-server.tar bt-server:temp
+docker import bt-server.tar bt-server
 # 进入容器
 docker exec -i -t  bt-server /bin/bash
 ```

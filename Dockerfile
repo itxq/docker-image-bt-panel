@@ -1,5 +1,7 @@
+# 基于Centos7镜像
 FROM centos:7
 
+# 镜像作者信息
 MAINTAINER IT小强xqitw.cn <mail@xqitw.cn>
 
 # 包含环境变量
@@ -51,10 +53,10 @@ LABEL org.label-schema.schema-version="1.0.0" \
     org.label-schema.build-date="20190521"
 
 # 开放端口
-EXPOSE 8888 8080 3306 888 443 80 21 20
+EXPOSE 39000-40000 8888 8080 3306 888 443 80 21 20
 
 # 可挂载目录
-VOLUME ["/www/wwwroot","/www/wwwlogs","/www/backup/database","/www/backup/site","/www/server/data","/www/server/cron","/www/Recycle_bin"]
+VOLUME ["/www/wwwroot","/www/wwwlogs","/www/backup/database","/www/backup/site","/www/backup/path","/www/server/data","/www/server/cron","/www/Recycle_bin"]
 
 # 启动命令
 CMD /bin/bash /www/run.sh
