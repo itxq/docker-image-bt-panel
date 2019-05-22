@@ -2,6 +2,16 @@ FROM centos:7
 
 MAINTAINER IT小强xqitw.cn <mail@xqitw.cn>
 
+# 包含环境变量
+RUN echo "# .bash_profile" > /root/.bash_profile \
+    && echo "# Get the aliases and functions" >> /root/.bash_profile \
+    && echo "if [ -f ~/.bashrc ]; then" >> /root/.bash_profile \
+    && echo "	. ~/.bashrc" >> /root/.bash_profile \
+    && echo "fi" >> /root/.bash_profile \
+    && echo "# User specific environment and startup programs" >> /root/.bash_profile \
+    && echo "PATH=\$PATH:\$HOME/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin" >> /root/.bash_profile \
+    && echo "export PATH" >> /root/.bash_profile \
+
 # 安装必要的扩展包
 RUN yum update -y \
     && yum install -y expect \
@@ -32,15 +42,19 @@ RUN echo "#!/bin/sh" >> /www/run.sh \
     && echo "/etc/init.d/bt restart" >> /www/run.sh \
     && echo "tail -f -n 1 /www/expect.sh" >> /www/run.sh
 
+# 镜像信息
 LABEL org.label-schema.schema-version="1.0.0" \
     org.label-schema.name="Docker Bt Panel" \
     org.label-schema.vendor="IT小强xqitw.cn" \
     org.label-schema.license="Apache Licence 2.0" \
     org.label-schema.build-date="20190521"
 
+# 开放端口
 EXPOSE 8888 8080 3306 888 443 80 21 20
 
+# 可挂载目录
 VOLUME ["/www/wwwroot","/www/wwwlogs","/www/backup/database","/www/backup/site","/www/server/data","/www/server/cron","/www/Recycle_bin"]
 
+# 启动命令
 CMD /bin/bash /www/run.sh
 
