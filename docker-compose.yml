@@ -10,7 +10,7 @@ services:
     restart: on-failure:3
     image: ${BT_IMAGE_NAME}
     build:
-      context: ./
+      context: ./bt
       dockerfile: Dockerfile
     volumes:
       - ${WWW_ROOT_PATH}:/www/wwwroot:rw
