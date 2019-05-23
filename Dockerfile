@@ -55,9 +55,6 @@ LABEL org.label-schema.schema-version="1.0.0" \
 # 开放端口
 EXPOSE 39000-40000 8888 8080 3306 888 443 80 21 20
 
-# 可挂载目录
-VOLUME ["/www/wwwroot","/www/wwwlogs","/www/backup/database","/www/backup/site","/www/backup/path","/www/server/data","/www/server/cron","/www/Recycle_bin"]
-
 # 启动命令
 CMD /bin/bash /www/run.sh
 
