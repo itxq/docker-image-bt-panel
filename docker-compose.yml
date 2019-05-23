@@ -12,15 +12,14 @@ services:
     build:
       context: ./bt
       dockerfile: Dockerfile
-    volumes:
-      - ${WWW_ROOT_PATH}:/www/wwwroot:rw
-      - ${WWW_LOGS_PATH}:/www/wwwlogs:rw
-      - ${BACKUP_PATH}/database:/www/backup/database:rw
-      - ${BACKUP_PATH}/site:/www/backup/site:rw
-      - ${BACKUP_PATH}/path:/www/backup/path:rw
-      - ${DATA_PATH}:/www/server/data:rw
-      - ${CRON_PATH}:/www/server/cron:rw
-      - ${RECYCLE_PATH}:/www/Recycle_bin:rw
+    #volumes:
+    #  - ${WWW_ROOT_PATH}:/www/wwwroot:rw
+    #  - ${WWW_LOGS_PATH}:/www/wwwlogs:rw
+    #  - ${BACKUP_PATH}/database:/www/backup/database:rw
+    #  - ${BACKUP_PATH}/site:/www/backup/site:rw
+    #  - ${BACKUP_PATH}/path:/www/backup/path:rw
+    #  - ${CRON_PATH}:/www/server/cron:rw
+    #  - ${RECYCLE_PATH}:/www/Recycle_bin:rw
     ports:
       - "${PORT_CUSTOM}"
       - "${PORT_8888}:8888"

@@ -11,7 +11,7 @@ Docker Bt Panel
 
 ```shell
 # docker 启动
-docker run -p 8888:8888 -p 80:80 -v ./www:/www/wwwroot --name bt-server itxq/bt:latest /bin/bash /www/run.sh
+docker run -p 8888:8888 --name bt-server itxq/bt:latest /bin/bash /www/run.sh
 # docker-composer 启动
 docker-compose -f docker-compose.yml up -d
 ```
@@ -35,7 +35,6 @@ docker-compose -f docker-compose.yml up -d
 + /www/backup/database 数据库备份存放目录
 + /www/backup/site  网站备份存放目录
 + /www/backup/path  目录备份存放目录
-+ /www/server/data 数据库数据目录
 + /www/server/cron 定时任务脚本存放目录
 + /www/Recycle_bin 回收站目录
 
