@@ -49,6 +49,8 @@ docker-compose -f docker-compose.yml up -d
 ### 常用命令小结：
 
 ```shell
+# 提交新镜像
+docker commit bt-server bt-server:latest
 # 导出
 docker export -o bt-server.tar bt-server
 # 导入
@@ -56,5 +58,5 @@ docker import bt-server.tar bt-server:latest
 # 进入容器
 docker exec -i -t  bt-server /bin/bash
 # 可视化管理工具
-docker run -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock:ro -v ./portainer:/data --restart=always --name portainer-server portainer/portainer:latest 
+docker run -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock:ro --restart=always --name portainer-server portainer/portainer:latest 
 ```
