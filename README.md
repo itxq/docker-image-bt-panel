@@ -16,7 +16,6 @@ Docker Bt Panel
 + [Get Docker CE for Debian](https://docs.docker.com/install/linux/docker-ce/debian/)
 + [Get Docker CE for Fedora](https://docs.docker.com/install/linux/docker-ce/fedora/)
 + [Get Docker CE for Ubuntu](https://docs.docker.com/install/linux/docker-ce/ubuntu/)
-+ [Get Docker CE for Ubuntu](https://docs.docker.com/install/linux/docker-ce/ubuntu/)
 
 ## 安装 Docker Compose
 
