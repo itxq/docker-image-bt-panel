@@ -29,6 +29,9 @@ RUN yes y | /bin/bash install.sh
 RUN echo "/www_xqitw_cn" > /www/server/panel/data/admin_path.pl \
     && python /www/server/panel/tools.py panel www_xqitw_cn
 
+# 创建目录
+RUN cd / && mkdir -m 777 itxq
+
 # 修改宝塔面板用户名
 RUN echo "#!/bin/expect" > /itxq/expect.sh \
     && echo "spawn python /www/server/panel/tools.py cli" >> /itxq/expect.sh \
