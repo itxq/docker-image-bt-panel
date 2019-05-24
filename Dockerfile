@@ -16,6 +16,7 @@ RUN echo "# .bash_profile" > /root/.bash_profile \
 
 # 安装必要的扩展包
 RUN yum update -y \
+    && yum install -y git \
     && yum install -y expect \
     && yum install -y crontabs \
     && yum install -y wget \
@@ -29,32 +30,32 @@ RUN echo "/www_xqitw_cn" > /www/server/panel/data/admin_path.pl \
     && python /www/server/panel/tools.py panel www_xqitw_cn
 
 # 修改宝塔面板用户名
-RUN echo "#!/bin/expect" > /www/expect.sh \
-    && echo "spawn python /www/server/panel/tools.py cli" >> /www/expect.sh \
-    && echo "expect \"请输入命令编号：\"" >> /www/expect.sh \
-    && echo "send 6\n" >> /www/expect.sh \
-    && echo "expect \"请输入新的面板用户名(>5位)：\"" >> /www/expect.sh \
-    && echo "send \"www_xqitw_cn\n\"" >> /www/expect.sh \
-    && echo "expect eof" >> /www/expect.sh \
-    && expect /www/expect.sh
+RUN echo "#!/bin/expect" > /itxq/expect.sh \
+    && echo "spawn python /www/server/panel/tools.py cli" >> /itxq/expect.sh \
+    && echo "expect \"请输入命令编号：\"" >> /itxq/expect.sh \
+    && echo "send 6\n" >> /itxq/expect.sh \
+    && echo "expect \"请输入新的面板用户名(>5位)：\"" >> /itxq/expect.sh \
+    && echo "send \"www_xqitw_cn\n\"" >> /itxq/expect.sh \
+    && echo "expect eof" >> /itxq/expect.sh \
+    && expect /itxq/expect.sh
 
 # 启动脚本
-RUN echo "Docker Bt Panel Start Complete!" > /www/run.log \
-    && echo "#!/bin/sh" > /www/run.sh \
-    && echo "/usr/sbin/crond start" >> /www/run.sh \
-    && echo "/etc/init.d/bt restart" >> /www/run.sh \
-    && echo "tail -f -n 1 /www/run.log" >> /www/run.sh
+RUN echo "Docker Bt Panel Start Complete!" > /itxq/run.log \
+    && echo "#!/bin/sh" > /itxq/run.sh \
+    && echo "/usr/sbin/crond start" >> /itxq/run.sh \
+    && echo "/etc/init.d/bt restart" >> /itxq/run.sh \
+    && echo "tail -f -n 1 /itxq/run.log" >> /itxq/run.sh
 
 # 镜像信息
-LABEL org.label-schema.schema-version="2.0.0" \
+LABEL org.label-schema.schema-version="3.0.0" \
     org.label-schema.name="Docker Bt Panel" \
     org.label-schema.vendor="IT小强xqitw.cn" \
     org.label-schema.license="Apache Licence 2.0" \
-    org.label-schema.build-date="20190523"
+    org.label-schema.build-date="20190524"
 
 # 开放端口
 EXPOSE 39000-40000 8888 8080 3306 888 443 80 21 20
 
 # 启动命令
-CMD /bin/bash /www/run.sh
+CMD /bin/bash /itxq/run.sh
 
