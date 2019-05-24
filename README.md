@@ -25,14 +25,14 @@ Docker Bt Panel
 ## 环境变量配置（使用docker-composer启动时）
 
 + 创建 `.env` 文件
-+ 复制 `example.env` 文件内容 到 `.env` 文件
++ 复制 `.example.env` 文件内容 到 `.env` 文件
 + 修改 `.env` 文件的中的配置项
 
 ## 启动命令示例：
 
 ```shell
 # docker 启动
-docker run -p 8888:8888 --name bt-server itxq/bt:latest /bin/bash /www/run.sh
+docker run -p 8888:8888 --name bt-server itxq/bt:latest /bin/bash /itxq/run.sh
 # docker-composer 启动
 docker-compose -f docker-compose.yml up -d
 ```
@@ -58,6 +58,7 @@ docker-compose -f docker-compose.yml up -d
 + /www/backup/path  目录备份存放目录
 + /www/server/cron 定时任务脚本存放目录
 + /www/Recycle_bin 回收站目录
++ /www/server/data 数据库数据目录
 
 ## 默认登录信息：
 

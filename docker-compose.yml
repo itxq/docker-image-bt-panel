@@ -6,22 +6,24 @@ services:
     env_file:
       - .env
     container_name: bt-server
-    command: /bin/bash /www/run.sh && exec the_original_command_goes_here
+    command: /bin/bash /itxq/run.sh && exec the_original_command_goes_here
     restart: on-failure:3
     image: ${BT_IMAGE_NAME}
     build:
       context: ./bt
       dockerfile: Dockerfile
-    #volumes:
-    #  - ${WWW_ROOT_PATH}:/www/wwwroot:rw
-    #  - ${WWW_LOGS_PATH}:/www/wwwlogs:rw
-    #  - ${BACKUP_PATH}/database:/www/backup/database:rw
-    #  - ${BACKUP_PATH}/site:/www/backup/site:rw
-    #  - ${BACKUP_PATH}/path:/www/backup/path:rw
-    #  - ${CRON_PATH}:/www/server/cron:rw
-    #  - ${RECYCLE_PATH}:/www/Recycle_bin:rw
+    volumes:
+      - ${WWW_ROOT_PATH}:/www/wwwroot:rw
+      - ${WWW_LOGS_PATH}:/www/wwwlogs:rw
+      - ${BACKUP_PATH}/database:/www/backup/database:rw
+      - ${BACKUP_PATH}/site:/www/backup/site:rw
+      - ${BACKUP_PATH}/path:/www/backup/path:rw
+      - ${CRON_PATH}:/www/server/cron:rw
+      - ${RECYCLE_PATH}:/www/Recycle_bin:rw
+      - ${DATA_PATH}:/www/server/data:rw
     ports:
       - "${PORT_CUSTOM}"
+      - "${PORT_FTP}"
       - "${PORT_8888}:8888"
       - "${PORT_8080}:8080"
       - "${PORT_888}:888"

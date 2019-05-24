@@ -4,16 +4,15 @@ services:
 
   bt-server:
     container_name: bt-server
-    command: /bin/bash /www/run.sh && exec the_original_command_goes_here
+    command: /bin/bash /itxq/run.sh && exec the_original_command_goes_here
     restart: on-failure
     image: bt-server:latest
     build:
       context: ./bt
       dockerfile: Dockerfile
     ports:
-      - "39000-40000:39000-40000"
       - "8888:8888"
-      - "8080:8080"
+      - "8080-8190:8080-8190"
       - "3306:3306"
       - "888:888"
       - "443:443"
