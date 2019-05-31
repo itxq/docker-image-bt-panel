@@ -1,22 +1,24 @@
-version: "2"
+version: "3"
 
 services:
 
   bt-server:
+    env_file:
+      - .env
     container_name: bt-server
     command: /bin/bash /itxq/run.sh && exec the_original_command_goes_here
-    restart: on-failure
-    image: bt-server:latest
+    restart: on-failure:3
+    image: ${BT_IMAGE_NAME}
     build:
       context: ./bt
       dockerfile: Dockerfile
     ports:
-      - "8888:8888"
-      - "8080-8190:8080-8190"
-      - "3306:3306"
-      - "888:888"
-      - "443:443"
-      - "80:80"
-      - "21:21"
-      - "20:20"
-    network_mode: bridge
+      - "${PORT_CUSTOM}"
+      - "${PORT_FTP}"
+      - "${PORT_8888}:8888"
+      - "${PORT_8080}:8080"
+      - "${PORT_888}:888"
+      - "${PORT_443}:443"
+      - "${PORT_80}:80"
+      - "${PORT_21}:21"
+      - "${PORT_20}:20"

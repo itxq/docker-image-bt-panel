@@ -31,4 +31,3 @@ services:
       - "${PORT_80}:80"
       - "${PORT_21}:21"
       - "${PORT_20}:20"
-    network_mode: bridge
