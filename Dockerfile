@@ -50,11 +50,11 @@ RUN echo "Docker Bt Panel Start Complete!" > /itxq/run.log \
     && echo "tail -f -n 1 /itxq/run.log" >> /itxq/run.sh
 
 # 镜像信息
-LABEL org.label-schema.schema-version="3.0.0" \
+LABEL org.label-schema.schema-version="3.0.1" \
     org.label-schema.name="Docker Bt Panel" \
     org.label-schema.vendor="IT小强xqitw.cn" \
     org.label-schema.license="Apache Licence 2.0" \
-    org.label-schema.build-date="20190524"
+    org.label-schema.build-date="20190612"
 
 # 开放端口
 EXPOSE 39000-40000 8888 8080 3306 888 443 80 21 20
