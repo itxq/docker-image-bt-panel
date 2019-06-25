@@ -6,15 +6,8 @@ MAINTAINER IT小强xqitw.cn <mail@xqitw.cn>
 
 ARG BT_VERSION=6.9.5
 
-# 包含环境变量
-RUN echo "# .bash_profile" > /root/.bash_profile \
-    && echo "# Get the aliases and functions" >> /root/.bash_profile \
-    && echo "if [ -f ~/.bashrc ]; then" >> /root/.bash_profile \
-    && echo "	. ~/.bashrc" >> /root/.bash_profile \
-    && echo "fi" >> /root/.bash_profile \
-    && echo "# User specific environment and startup programs" >> /root/.bash_profile \
-    && echo "PATH=\$PATH:\$HOME/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin" >> /root/.bash_profile \
-    && echo "export PATH" >> /root/.bash_profile
+# 添加shell脚本
+COPY ./shell /itxq/shell
 
 # 安装必要的扩展包
 RUN yum update -y \
@@ -35,24 +28,10 @@ RUN echo "/www_xqitw_cn" > /www/server/panel/data/admin_path.pl \
 RUN cd / && mkdir -m 777 itxq
 
 # 修改宝塔面板用户名
-RUN echo "#!/bin/expect" > /itxq/expect.sh \
-    && echo "spawn python /www/server/panel/tools.py cli" >> /itxq/expect.sh \
-    && echo "expect \"请输入命令编号：\"" >> /itxq/expect.sh \
-    && echo "send 6\n" >> /itxq/expect.sh \
-    && echo "expect \"请输入新的面板用户名(>5位)：\"" >> /itxq/expect.sh \
-    && echo "send \"www_xqitw_cn\n\"" >> /itxq/expect.sh \
-    && echo "expect eof" >> /itxq/expect.sh \
-    && expect /itxq/expect.sh
-
-# 启动脚本
-RUN echo "Docker Bt Panel Start Complete!" > /itxq/run.log \
-    && echo "#!/bin/sh" > /itxq/run.sh \
-    && echo "/usr/sbin/crond start" >> /itxq/run.sh \
-    && echo "/etc/init.d/bt restart" >> /itxq/run.sh \
-    && echo "tail -f -n 1 /itxq/run.log" >> /itxq/run.sh
+RUN expect /itxq/shell/expect.sh
 
 # 镜像信息
-LABEL org.label-schema.schema-version="4.0.1" \
+LABEL org.label-schema.schema-version="4.0.0" \
     org.label-schema.name="Docker Bt Panel" \
     org.label-schema.vendor="IT小强xqitw.cn" \
     org.label-schema.license="Apache Licence 2.0" \
@@ -62,5 +41,5 @@ LABEL org.label-schema.schema-version="4.0.1" \
 EXPOSE 8888 8080 3306 888 443 80 21 20
 
 # 启动命令
-CMD /bin/bash /itxq/run.sh
+CMD /bin/bash /itxq/shell/run.sh
 
