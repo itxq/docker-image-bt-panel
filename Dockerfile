@@ -4,6 +4,8 @@ FROM centos:7
 # 镜像作者信息
 MAINTAINER IT小强xqitw.cn <mail@xqitw.cn>
 
+ARG BT_VERSION=6.9.5
+
 # 包含环境变量
 RUN echo "# .bash_profile" > /root/.bash_profile \
     && echo "# Get the aliases and functions" >> /root/.bash_profile \
@@ -20,7 +22,7 @@ RUN yum update -y \
     && yum install -y expect \
     && yum install -y crontabs \
     && yum install -y wget \
-    && wget -O install.sh http://download.bt.cn/install/install_6.0.sh
+    && wget -O install.sh http://download.bt.cn/install/install_6.0.sh?v=${BT_VERSION}
 
 # 安装宝塔面板
 RUN yes y | /bin/bash install.sh
