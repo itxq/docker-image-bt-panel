@@ -5,7 +5,7 @@ FROM centos:7
 MAINTAINER IT小强xqitw.cn <mail@xqitw.cn>
 
 # 宝塔面板下载地址
-ARG BT_VERSION="http://download.bt.cn/install/install_6.0.sh?v=6.9.5"
+ARG BT_VERSION="http://download.bt.cn/install/install_6.0.sh?v=6.9.6"
 
 # 添加shell脚本
 COPY ./shell /itxq/shell
@@ -27,11 +27,11 @@ RUN echo "/www_xqitw_cn" > /www/server/panel/data/admin_path.pl \
     && expect /itxq/shell/expect.sh
 
 # 镜像信息
-LABEL org.label-schema.schema-version="4.0.0" \
+LABEL org.label-schema.schema-version="4.0.1" \
     org.label-schema.name="Docker Bt Panel" \
     org.label-schema.vendor="IT小强xqitw.cn" \
     org.label-schema.license="Apache Licence 2.0" \
-    org.label-schema.build-date="20190625"
+    org.label-schema.build-date="20190626"
 
 # 开放端口
 EXPOSE 8888 8080 3306 888 443 80 21 20
