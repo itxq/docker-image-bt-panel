@@ -16,6 +16,7 @@ RUN yum update -y \
     && yum install -y git \
     && yum install -y expect \
     && yum install -y crontabs \
+    && yum install -y deltarpm \
     && yum install -y wget \
     && wget -O install.sh $BT_VERSION
 
@@ -28,15 +29,17 @@ RUN echo "/www_xqitw_cn" > /www/server/panel/data/admin_path.pl \
     && expect /itxq/shell/expect.sh
 
 # 镜像信息
-LABEL org.label-schema.schema-version="4.0.1" \
+LABEL org.label-schema.schema-version="4.0.0" \
     org.label-schema.name="Docker Bt Panel" \
     org.label-schema.vendor="IT小强xqitw.cn" \
     org.label-schema.license="Apache Licence 2.0" \
-    org.label-schema.build-date="20190626"
+    org.label-schema.build-date="20190627"
 
 # 开放端口
 EXPOSE 8888 8080 3306 888 443 80 21 20
 
 # 启动命令
-CMD /bin/bash /itxq/shell/run.sh
+ENTRYPOINT /bin/bash /itxq/shell/run.sh
+
+CMD /bin/bash
 
