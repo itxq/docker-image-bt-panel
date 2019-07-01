@@ -29,6 +29,9 @@ RUN echo "/www_xqitw_cn" > /www/server/panel/data/admin_path.pl \
     && python /www/server/panel/tools.py panel www_xqitw_cn \
     && expect /itxq/shell/expect.sh
 
+# 建立软连接
+RUN ln -sfv /itxq/shell/run.sh /usr/bin/run-bt && chmod a+x /usr/bin/run-bt
+
 # 镜像信息
 LABEL org.label-schema.schema-version="4.0.0" \
     org.label-schema.name="Docker Bt Panel" \
@@ -40,7 +43,5 @@ LABEL org.label-schema.schema-version="4.0.0" \
 EXPOSE 8888 8080 3306 888 443 80 21 20
 
 # 启动命令
-ENTRYPOINT /bin/bash /itxq/shell/run.sh
-
-CMD /bin/bash
+CMD ["run-bt"]
 
