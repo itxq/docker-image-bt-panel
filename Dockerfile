@@ -5,7 +5,7 @@ FROM centos:latest
 MAINTAINER IT小强xqitw.cn <mail@xqitw.cn>
 
 # 宝塔面板下载地址
-ARG BT_VERSION="http://download.bt.cn/install/install_6.0.sh?vsersion=6.9.6"
+ARG BT_VERSION="http://download.bt.cn/install/install_6.0.sh"
 ENV BT_VERSION=$BT_VERSION
 
 # 添加shell脚本
@@ -19,9 +19,10 @@ RUN yum update -y \
     && yum install -y deltarpm \
     && yum install -y sudo \
     && yum install -y wget \
-    && wget -O install.sh $BT_VERSION
+    && yum clean all
 
 # 安装宝塔面板
+RUN wget -O install.sh $BT_VERSION
 RUN yes y | /bin/bash install.sh
 
 # 修改安全入口 、 面板密码 、 面板用户名
