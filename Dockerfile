@@ -17,6 +17,7 @@ RUN yum update -y \
     && yum install -y expect \
     && yum install -y crontabs \
     && yum install -y deltarpm \
+    && yum install -y sudo \
     && yum install -y wget \
     && wget -O install.sh $BT_VERSION
 
