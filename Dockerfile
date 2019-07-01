@@ -33,7 +33,7 @@ LABEL org.label-schema.schema-version="4.0.0" \
     org.label-schema.name="Docker Bt Panel" \
     org.label-schema.vendor="IT小强xqitw.cn" \
     org.label-schema.license="Apache Licence 2.0" \
-    org.label-schema.build-date="20190628"
+    org.label-schema.build-date="20190701"
 
 # 开放端口
 EXPOSE 8888 8080 3306 888 443 80 21 20
