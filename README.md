@@ -21,6 +21,16 @@ Docker Bt Panel
 
 + [Install Docker Compose](https://docs.docker.com/compose/install/)
 
+## 镜像下载
+
++ 镜像仓库地址：[https://hub.docker.com/r/itxq/bt](https://hub.docker.com/r/itxq/bt)
+
++ Github地址：[https://github.com/itxq/docker-image-bt-panel](https://github.com/itxq/docker-image-bt-panel)
+
+```shell
+# 下载命令
+docker pull itxq/bt:latest
+```
 
 ## 环境变量配置（使用docker-composer启动时）
 
@@ -32,7 +42,7 @@ Docker Bt Panel
 
 ```shell
 # docker 启动
-docker run -p 8888:8888 --name bt-server itxq/bt:latest /bin/bash /itxq/run.sh
+docker run -p 8888:8888 --name bt-server itxq/bt:latest
 # docker-composer 启动
 docker-compose -f docker-compose.yml up -d
 ```
@@ -62,7 +72,7 @@ docker-compose -f docker-compose.yml up -d
 
 ## 默认登录信息：
 
-+ **地址：** http://127.0.0.1:8888/www_xqitw_cn （此处需要替换为你的IP及映射的端口号）
++ **地址：** [http://127.0.0.1:8888/www_xqitw_cn](http://127.0.0.1:8888/www_xqitw_cn)（此处需要替换为你的IP及映射的端口号）
 
 + **账号：** www_xqitw_cn
 
@@ -72,13 +82,13 @@ docker-compose -f docker-compose.yml up -d
 
 ```shell
 # 提交新镜像
-docker commit bt-server bt-server:latest
+docker commit server-bt server-bt:latest
 # 导出
-docker export -o bt-server.tar bt-server
+docker export -o server-bt.tar server-bt
 # 导入
-docker import bt-server.tar bt-server:latest
+docker import server-bt.tar server-bt:latest
 # 进入容器
-docker exec -i -t  bt-server /bin/bash
+docker exec -i -t  server-bt /bin/bash
 # 可视化管理工具
-docker run -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock:ro --restart=always --name portainer-server portainer/portainer:latest 
+docker run -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock:ro -v ./data:/data:rw --restart=always --name portainer-server portainer/portainer:latest 
 ```

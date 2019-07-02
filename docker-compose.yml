@@ -6,7 +6,6 @@ services:
     env_file:
       - .env
     container_name: bt-server
-    command: /bin/bash /itxq/run.sh && exec the_original_command_goes_here
     restart: on-failure:3
     image: ${BT_IMAGE_NAME}
     build:
