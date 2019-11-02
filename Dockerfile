@@ -41,7 +41,7 @@ LABEL org.label-schema.schema-version="4.0.0" \
     org.label-schema.build-date="20190701"
 
 # 开放端口
-EXPOSE 8888 8080 3306 888 443 80 21 20
+EXPOSE 8888 8080 888 443 80 21 20
 
 # 启动命令
 CMD ["run-bt"]
