@@ -6,7 +6,7 @@ MAINTAINER IT小强xqitw.cn <mail@xqitw.cn>
 
 # 宝塔面板下载地址
 ARG BT_VERSION="http://download.bt.cn/install/install_6.0.sh"
-ENV BT_VERSION=$BT_VERSION
+ENV BT_VERSION=${BT_VERSION}
 
 # 添加shell脚本
 COPY ./shell /itxq/shell
@@ -16,13 +16,12 @@ RUN yum update -y \
     && yum install -y git \
     && yum install -y expect \
     && yum install -y crontabs \
-    && yum install -y deltarpm \
     && yum install -y sudo \
     && yum install -y wget \
     && yum clean all
 
 # 安装宝塔面板
-RUN wget -O install.sh $BT_VERSION
+RUN wget -O install.sh ${BT_VERSION}
 RUN yes y | /bin/bash install.sh
 
 # 修改安全入口 、 面板密码 、 面板用户名
