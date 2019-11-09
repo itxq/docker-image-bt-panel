@@ -4,6 +4,10 @@ FROM centos:latest
 # 镜像作者信息
 MAINTAINER IT小强xqitw.cn <mail@xqitw.cn>
 
+# 设置时区为上海
+RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+RUN echo 'Asia/Shanghai' > /etc/timezone
+
 # 宝塔面板下载地址
 ARG BT_VERSION="http://download.bt.cn/install/install_6.0.sh"
 ENV BT_VERSION=${BT_VERSION}
@@ -33,11 +37,11 @@ RUN echo "/www_xqitw_cn" > /www/server/panel/data/admin_path.pl \
 RUN ln -sfv /itxq/shell/run.sh /usr/bin/run-bt && chmod a+x /usr/bin/run-bt
 
 # 镜像信息
-LABEL org.label-schema.schema-version="4.0.0" \
+LABEL org.label-schema.schema-version="5.0.0" \
     org.label-schema.name="Docker Bt Panel" \
     org.label-schema.vendor="IT小强xqitw.cn" \
     org.label-schema.license="Apache Licence 2.0" \
-    org.label-schema.build-date="20190701"
+    org.label-schema.build-date="20191109"
 
 # 开放端口
 EXPOSE 8888 8080 888 443 80 21 20
