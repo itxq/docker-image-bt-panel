@@ -70,6 +70,14 @@ docker-compose -f docker-compose.yml up -d
 + /www/Recycle_bin 回收站目录
 + /www/server/data 数据库数据目录
 
+## 默认登录信息：
+
++ **地址：** [http://127.0.0.1:9205/www_xqitw_cn](http://127.0.0.1:9205/www_xqitw_cn)（此处需要替换为你的IP及映射的端口号）
+
++ **账号：** www_xqitw_cn
+
++ **密码：** www_xqitw_cn
+
 ## 常用命令小结：
 
 ```shell
