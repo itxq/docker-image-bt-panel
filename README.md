@@ -70,14 +70,6 @@ docker-compose -f docker-compose.yml up -d
 + /www/Recycle_bin 回收站目录
 + /www/server/data 数据库数据目录
 
-## 默认登录信息：
-
-+ **地址：** [http://127.0.0.1:8888/www_xqitw_cn](http://127.0.0.1:8888/www_xqitw_cn)（此处需要替换为你的IP及映射的端口号）
-
-+ **账号：** www_xqitw_cn
-
-+ **密码：** www_xqitw_cn
-
 ## 常用命令小结：
 
 ```shell
@@ -90,5 +82,5 @@ docker import server-bt.tar server-bt:latest
 # 进入容器
 docker exec -i -t  server-bt /bin/bash
 # 可视化管理工具
-docker run -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock:ro -v ./data:/data:rw --restart=always --name portainer-server portainer/portainer:latest 
+docker run -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock -v /portainer:/data --restart=always --name server-portainer portainer/portainer:latest 
 ```

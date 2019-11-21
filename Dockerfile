@@ -28,23 +28,18 @@ RUN yum update -y \
 RUN wget -O install.sh ${BT_VERSION}
 RUN yes y | /bin/bash install.sh
 
-# 修改安全入口 、 面板密码 、 面板用户名
-RUN echo "/www_xqitw_cn" > /www/server/panel/data/admin_path.pl \
-    && python /www/server/panel/tools.py panel www_xqitw_cn \
-    && expect /itxq/shell/expect.sh
-
 # 建立软连接
 RUN ln -sfv /itxq/shell/run.sh /usr/bin/run-bt && chmod a+x /usr/bin/run-bt
 
 # 镜像信息
-LABEL org.label-schema.schema-version="5.0.0" \
+LABEL org.label-schema.schema-version="6.0.0" \
     org.label-schema.name="Docker Bt Panel" \
     org.label-schema.vendor="IT小强xqitw.cn" \
     org.label-schema.license="Apache Licence 2.0" \
-    org.label-schema.build-date="20191109"
+    org.label-schema.build-date="20191121"
 
 # 开放端口
-EXPOSE 8888 8080 888 443 80 21 20
+EXPOSE 8888 443 80 21 20
 
 # 启动命令
 CMD ["run-bt"]
