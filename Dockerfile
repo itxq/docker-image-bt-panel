@@ -30,7 +30,7 @@ RUN yes y | /bin/bash install.sh
 
 # 修改安全入口 、 面板密码 、 面板用户名
 RUN echo "/www_xqitw_cn" > /www/server/panel/data/admin_path.pl \
-    && echo "9205" > /www/server/panel/data/port.pl \
+    && echo "9204" > /www/server/panel/data/port.pl \
     && python /www/server/panel/tools.py panel www_xqitw_cn \
     && expect /itxq/shell/expect.sh
 

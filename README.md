@@ -72,7 +72,7 @@ docker-compose -f docker-compose.yml up -d
 
 ## 默认登录信息：
 
-+ **地址：** [http://127.0.0.1:9205/www_xqitw_cn](http://127.0.0.1:9205/www_xqitw_cn)（此处需要替换为你的IP及映射的端口号）
++ **地址：** [http://127.0.0.1:9204/www_xqitw_cn](http://127.0.0.1:9204/www_xqitw_cn)（此处需要替换为你的IP及映射的端口号）
 
 + **账号：** www_xqitw_cn
 
